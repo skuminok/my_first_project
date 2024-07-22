@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Все путешествия</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='img/background.jpg') }}");
+            background-size: cover;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Все путешествия</h1>
+        <ul>
+            {% for travel in travels %}
+                <li><a href="/travel/{{ travel[0] }}">{{ travel[1] }} - {{ travel[2] }}</a></li>
+            {% endfor %}
+        </ul>
+        <button onclick="location.href='{{ url_for('index') }}';">На главную</button><br>
+        <button onclick="location.href='{{ url_for('travel_add') }}';">Добавить новое путешествие</button>
+    </div>
+</body>
+</html>
